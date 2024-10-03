@@ -37,7 +37,7 @@ which include detailed parsing information and annotation of target oligos in th
 2. Create a new conda environment based on your platform:  
   ```$> conda create --prefix envs/marti --file envs/conda-linux-64.lock ``` (Linux)  
   ```$> conda create --prefix envs/marti --file envs/conda-osx-64.lock``` (MacOS)  
-3. Activate the environment: ```$> conda activate marti```  
+3. Activate the environment: ```$> conda activate envs/marti```  
 4. Build ```marti```: ```$> build.sh```
 
 <a name="guide"></a>
