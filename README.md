@@ -49,14 +49,14 @@ To run ```marti```: ```$> ./build/bin/marti <path/to/config.yaml>```
 
 #### Recommended workflow
 1. Create a new directory for your experiment
-2. Crate a new YAML config file in this directory (see the provided templates)
+2. Create a new YAML config file in this directory (see the provided templates)
 3. Populate the YAML config file with the parameters specific to this experiment
 4. Run ```marti``` with this YAML file as input. ```marti``` will automatically 
 create auxiliary folders and files with results in the directory where the config YAML file is located
 
 #### Inputs
 
-A template config file is provided in ```docs/template.yml```.
+A template config file is provided in ```docs/template.yaml```.
 
 The key ```marti``` parameters include:
 * The two PCR adapter sequences (referred to as ```adapterA``` and ```adapterB```)
