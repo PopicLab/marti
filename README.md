@@ -86,7 +86,7 @@ Full list of parameters:
 * ```max_err_rate_polya [default=0.1]``` determines the maximum distance allowed for a polyA match
 * ```min_rq [default=1.0]``` minimum required read quality score for classification (PacBio only)
 * ```max_reads_to_process [default=all]``` maximum number of reads to process from the BAM file
-* ```output_proper_trimmed [default=false]``` output a separate BAM file with proper reads only (trimmed, adjusted to forward strand)
+* ```output_proper_trimmed [default=false]``` output a separate BAM file with proper reads only (trimmed, adjusted to forward strand) (uBAMs only!)
 * ```n_threads [default=1]``` number of threads to use for classification
 * ```n_max_reads_in_mem [default=100000]``` maximum number of reads of load into memory at a time
 
