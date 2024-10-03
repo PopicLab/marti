@@ -1,0 +1,17 @@
+name: marti-env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - cmake
+  - make
+  - clang-tools
+  - gxx_linux-64=13.2.0 #[linux]
+  - libstdcxx-devel_linux-64=13.2.0 #[linux]
+  - clang_osx-64=16 #[osx]
+  - clangxx_osx-64=16 #[osx]
+  - openmp
+  - htslib
+  - python=3.8
+  - pip
