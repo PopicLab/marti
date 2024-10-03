@@ -127,6 +127,7 @@ BAM file containing all the input reads annotated with additional ```marti``` ta
 ##### Proper cDNA BAM file (if configured) (```.proper.cdna.bam```)
 BAM file containing only proper reads with trimmed adapters (the polyA is kept).
 Note: reads that were found in the reverse complemented configuration are flipped to the forward strand.
+Note: this functionality is available only for unmapped BAM inputs.
 
 ##### Reports (```reports/``` folder)
 * ```class_counts.tsv``` TSV file providing the number of reads with each artifact class profile
