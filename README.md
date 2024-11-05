@@ -8,16 +8,16 @@
 <a name="overview"></a>
 ### Overview 
 
-```marti``` is a lightweight framework for the classification and quantification of artefactual cDNA 
+```marti``` is a lightweight framework for the classification and quantification of artefactual long-read cDNA 
 constructs. At a high level, ```marti``` classifies each read based on the presence, absence, and 
 location of predefined target oligos (e.g., PCR and sequencing adapters) within the read sequence. 
-It takes as input (1) a BAM file with long cDNA reads and (2) a YAML configuration file with search 
-parameters and target sequences of interest. It outputs (1) a BAM file with annotated cDNA reads 
+It takes as input (1) a uBAM file with long cDNA reads and (2) a YAML configuration file with search 
+parameters and target sequences of interest. It outputs (1) a uBAM file with annotated cDNA reads 
 (per-read annotations include the artifact category, the coordinates of all target oligos and the native 
 cDNA sequence, and the structural representation of the read), (2) TSV reports with counts for each 
 artifact category and read structure, respectively, and (3) log files with examples of each artifact category, 
 which include detailed parsing information and annotation of target oligos in these reads. Optionally, 
-```marti``` can be configured to output an additional BAM file containing only proper (non-artefactual) trimmed reads.
+```marti``` can be configured to output an additional uBAM file containing only proper (non-artefactual) trimmed reads.
 
 <a name="install"></a>
 ### Installation
@@ -59,7 +59,7 @@ expected to be located in a proper read
 
 Full list of parameters:
 
-* ```input_bam``` path to the input BAM file
+* ```input_bam``` path to the input uBAM/BAM file
 * ```adapterA``` PCR adapter sequence 
 * ```adapterB``` PCR adapter sequence 
 * ```adapterA_SLS``` SLS sequence for the adapterA TSO
@@ -113,8 +113,8 @@ BAM file containing all the input reads annotated with additional ```marti``` ta
   * ```lev```: is the Levenshtein distance between the target sequence and its match in the read
 * ```th[string]``` comma-separated list of all targets found within the read
 
-##### Proper cDNA BAM file (if configured) (```.proper.cdna.bam```)
-BAM file containing only proper reads with trimmed adapters (the polyA is kept).
+##### Proper cDNA uBAM file (if configured) (```.proper.cdna.bam```)
+uBAM file containing only proper reads with trimmed adapters (the polyA is kept).
 Note: reads that were found in the reverse complemented configuration are flipped to the forward strand.
 Note: this functionality is available only for unmapped BAM inputs.
 
