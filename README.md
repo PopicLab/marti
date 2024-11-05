@@ -22,17 +22,6 @@ which include detailed parsing information and annotation of target oligos in th
 <a name="install"></a>
 ### Installation
 
-#### Conda (recommended)
-
-* To install marti in a new environment:  
-  ```$> conda create -n marti -c bioconda marti```  
-  ```$> conda activate marti```  
-
-* To install marti into the current environment:
-  ```$> conda install marti```
-
-#### From GitHub (to get the latest unreleased version)
-
 1. Clone the repository: ```$> git clone git@github.com:PopicLab/marti.git```  
 2. Create a new conda environment based on your platform:  
   ```$> conda create --prefix envs/marti --file envs/conda-linux-64.lock ``` (Linux)  
