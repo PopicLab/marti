@@ -58,7 +58,7 @@ void run_marti(marti::MartiConfig& cfg) {
             if (output_proper_bam && io::get_tag<int>(read.get(), "pr")) {
                 const int cdna_start = io::get_tag_array<int>(read.get(), "cd", 0);
                 const int cdna_end = io::get_tag_array<int>(read.get(), "cd", 1);
-                const bool switch_strand = io::get_tag_array<int>(read.get(), "sf", 1);
+                const bool switch_strand = io::get_tag<int>(read.get(), "sf");
                 io::read_ptr_t trimmed_read(bam_init1());
                 io::trim_and_orient_read(read.get(), cdna_start, cdna_end, switch_strand,trimmed_read.get());
                 output_proper_bam->write(trimmed_read.get());
