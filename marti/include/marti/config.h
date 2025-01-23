@@ -93,8 +93,8 @@ namespace marti {
                     class2structure[kProper][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
                     class2structure[kTsoTso][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))}};
                     class2structure[kRtRt][{tso_adapter, rt_adapter}] = {{rt_adapter, kPolyT, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
-                    class2structure[kNoPolyA][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(rt_adapter)}, {rt_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
-                    class2structure[kNoTSO][{tso_adapter, rt_adapter}] = {{tso_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}, {tso_adapter, kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))}};
+                    class2structure[kNoPolyA][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(rt_adapter)}, {rt_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}, {rt_adapter, kCdna, kSeqToRC.at(rt_adapter)}};
+                    class2structure[kNoTSO][{tso_adapter, rt_adapter}] = {{tso_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}, {tso_adapter, kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))}, {tso_adapter, kCdna, kSeqToRC.at(tso_adapter)}};
                 }
             }
         }
