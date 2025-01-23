@@ -49,7 +49,7 @@ namespace marti {
         std::map<seq_t, int> targets2lev; // maps targets to their maximum allowed Levenshtein distance
         std::map<seq_t, bool> is_split_tso; // indicates whether the TSO is configured with a split SLS
         // maps a read class to its expected structure (order of target oligos)
-        std::unordered_map<class_t, std::map<std::pair<seq_t, seq_t>, std::vector<seq_t>>> class2structure;
+        std::unordered_map<class_t, std::map<std::pair<seq_t, seq_t>, std::vector<std::vector<seq_t>>>> class2structure;
         // output folders and files
         std::filesystem::path experiment_dir;
         std::filesystem::path report_dir;
@@ -90,11 +90,11 @@ namespace marti {
         inline void set_structures() {
             for (const seq_t tso_adapter: params.tso_adapters) {
                 for (const seq_t rt_adapter: params.rt_adapters) {
-                    class2structure[kProper][{tso_adapter, rt_adapter}] = {kAdapterToTSO.at(tso_adapter), kCdna, kPolyA, kSeqToRC.at(rt_adapter)};
-                    class2structure[kTsoTso][{tso_adapter, rt_adapter}] = {kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))};
-                    class2structure[kRtRt][{tso_adapter, rt_adapter}] = {rt_adapter, kPolyT, kCdna, kPolyA, kSeqToRC.at(rt_adapter)};
-                    class2structure[kNoPolyA][{tso_adapter, rt_adapter}] = {kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(rt_adapter)};
-                    class2structure[kNoTSO][{tso_adapter, rt_adapter}] = {tso_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)};
+                    class2structure[kProper][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
+                    class2structure[kTsoTso][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))}};
+                    class2structure[kRtRt][{tso_adapter, rt_adapter}] = {{rt_adapter, kPolyT, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
+                    class2structure[kNoPolyA][{tso_adapter, rt_adapter}] = {{kAdapterToTSO.at(tso_adapter), kCdna, kSeqToRC.at(rt_adapter)}, {rt_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}};
+                    class2structure[kNoTSO][{tso_adapter, rt_adapter}] = {{tso_adapter, kCdna, kPolyA, kSeqToRC.at(rt_adapter)}, {tso_adapter, kCdna, kSeqToRC.at(kAdapterToTSO.at(tso_adapter))}};
                 }
             }
         }
