@@ -300,17 +300,18 @@ namespace marti {
                                              bool check_proper_only) const {
         for (const auto& [read_type, structure_map]: cfg_.class2structure) {
             if (check_proper_only && read_type != kProper) continue;
-            const auto& structure_for_type = structure_map.at({tso_adapter, rt_adapter});
-            if (structure.size() != structure_for_type.size()) continue;
-            // forward match
-            if (std::equal(structure.begin(), structure.end(),
-                           structure_for_type.begin())) { return read_type; }
-            // reverse complement match
-            if (std::equal(structure.begin(), structure.end(),
-                    /* traverse in reverse */ structure_for_type.rbegin(),
-                    [&](const auto& s1, const auto& s2)
-                    { return s1 == kSeqToRC.at(s2);})) { return read_type; }
-        }
+            for (const auto& structure_for_type : structure_map.at({tso_adapter, rt_adapter})) {
+		if (structure.size() != structure_for_type.size()) continue;
+                // forward match
+                if (std::equal(structure.begin(), structure.end(),
+                               structure_for_type.begin())) { return read_type; }
+                // reverse complement match
+                if (std::equal(structure.begin(), structure.end(),
+                        /* traverse in reverse */ structure_for_type.rbegin(),
+                        [&](const auto& s1, const auto& s2)
+                        { return s1 == kSeqToRC.at(s2);})) { return read_type; }
+            }
+	}
         return kUnk;
     }
 
