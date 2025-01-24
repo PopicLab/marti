@@ -127,7 +127,7 @@ namespace marti {
 
     void TargetAlignment::display_alignment(std::ostream& os, bool show_full) const {
         const int line_len = 100;
-        const int name_len = 20;
+        const int name_len = 25;
         std::string read_str = show_full ? std::string(read_seq.substr(0, start)) : "";
         std::string target_str = show_full ? std::string(start, '-') : "";
         std::string align_str = show_full ? std::string(start, '-') : "";
