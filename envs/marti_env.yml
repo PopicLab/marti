@@ -13,5 +13,9 @@ dependencies:
   - clangxx_osx-64=16 #[osx]
   - openmp
   - htslib
-  - python=3.8
+  - python=3.10
+  - matplotlib
+  - plotnine
+  - tqdm
+  - pysam
   - pip

@@ -221,7 +221,7 @@ class MartiStats:
         plots = []
         for experiment in self.experiments:
         	plots.append((ggplot(df_adapter[df_adapter['experiment']==experiment])
-                + facet_grid(facets="class_profile~adapter", scales="free")
+                + facet_grid(rows="class_profile", cols="adapter", scales="free")
                 + geom_bar(aes(x='lev', y='..prop..'), fill='darkseagreen') 
                 + self.get_theme()
                 + ggtitle("Adapter Levenshtein distance" + ": experiment " + experiment)
@@ -231,7 +231,7 @@ class MartiStats:
                 ))
         for experiment in self.experiments:
         	plots.append((ggplot(df_poly[df_poly['experiment']==experiment])
-                + facet_grid(facets="class_profile~adapter", scales="free")
+                + facet_grid(rows="class_profile", cols="adapter", scales="free")
                 + geom_bar(aes(x='lev', y='..prop..'), fill='darkseagreen') 
                 + self.get_theme()
                 + ggtitle("polyA/polyT Levenshtein distance" + ": experiment " + experiment)
@@ -258,7 +258,7 @@ class MartiStats:
         plots = []
         for experiment in self.experiments:
         	plots.append((ggplot(df_start[df_start['experiment']==experiment])
-                + facet_grid(facets="class_profile~adapter", scales="free")
+                + facet_grid(rows="class_profile", cols="adapter", scales="free")
                 + geom_bar(aes(x='offset', y='..count..'), fill='cadetblue') 
                 + self.get_theme()
                 + scale_y_log10()
@@ -269,7 +269,7 @@ class MartiStats:
                 ))
         for experiment in self.experiments:
         	plots.append((ggplot(df_end[df_end['experiment']==experiment])
-                + facet_grid(facets="class_profile~adapter", scales="free")
+                + facet_grid(rows="class_profile", cols="adapter", scales="free")
                 + geom_bar(aes(x='offset', y='..count..'), fill='cadetblue') 
                 + self.get_theme()
                 + scale_y_log10()
