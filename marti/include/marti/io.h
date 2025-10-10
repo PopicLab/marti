@@ -190,7 +190,7 @@ namespace marti::io {
     }
 
     inline void trim_and_orient_read(read_t *orig_read, const int start, const int end, const bool strand_switch, read_t *trimmed_read) {
-        std::string seq = get_seq(orig_read).substr(start, end);
+        std::string seq = get_seq(orig_read).substr(start, end - start + 1);
         if (strand_switch) {
             seq = utils::reverse_complement(seq);
         }

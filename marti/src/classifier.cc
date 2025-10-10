@@ -224,11 +224,11 @@ namespace marti {
             out.cdna.target_type = kCdna;
             out.cdna.start = 0;
             if (cdna_idx > 0) {
-                out.cdna.start = out.structure_alignments[cdna_idx - 1]->end + 1;
-                if (kTSOs.contains(out.structure_alignments[cdna_idx - 1]->target_type) &&
+		 out.cdna.start = out.structure_alignments[cdna_idx - 1]->end + 1;
+		 if (kTSOs.contains(out.structure_alignments[cdna_idx - 1]->target_type) &&
                     out.terminal_split_sls_alignments.contains(ReadTerminal::LEFT)) {
                     out.cdna.start = out.terminal_split_sls_alignments[ReadTerminal::LEFT]->end + 1;
-                }
+		 }
             }
             out.structure_alignments.push_back(&out.cdna);
         }
@@ -282,9 +282,18 @@ namespace marti {
                         // remove the extra polyA from reported structure and fix the cDNA coordinates
                         if (out.terminal_polya_alignments[ReadTerminal::LEFT]->start == out.structure_alignments[i]->start) {
                             out.cdna.start = out.structure_alignments[i-1]->end + 1;
-                        } else {
+                            if (kTSOs.contains(out.structure_alignments[i-1]->target_type) &&
+			        out.terminal_split_sls_alignments.contains(ReadTerminal::LEFT)) {
+				     out.cdna.start = out.terminal_split_sls_alignments[ReadTerminal::LEFT]->end + 1;
+			    }
+
+			} else {
                             out.cdna.end = out.structure_alignments[i+1]->start - 1;
-                        }
+                            if (kTSOs.contains(out.structure_alignments[i+1]->target_type) &&
+		                out.terminal_split_sls_alignments.contains(ReadTerminal::RIGHT)) {
+				out.cdna.end = out.terminal_split_sls_alignments[ReadTerminal::RIGHT]->start - 1;
+			    }
+			}
                         out.structure.erase(out.structure.begin() + i);
                         out.structure_alignments.erase(out.structure_alignments.begin() + i);
                         out.has_internal_polya = true;
